@@ -78,6 +78,16 @@
         color: #ffc800; /* Agencyテーマのプライマリカラー */
       }
 
+      /* ポートフォリオ画像用のカスタムスタイル */
+      .portfolio-item .img-fluid {
+        width: 100%;
+        height: 250px; /* 高さを固定 */
+        object-fit: contain; /* 画像全体が表示されるように調整 */
+        background-color: white; /* 画像の背景色を白にして見やすくする */
+        border-bottom: 1px solid #dee2e6;
+        padding: 1rem;
+      }
+
       /* フッターの調整 */
       footer {
         padding: 1.5rem 0;
@@ -180,42 +190,49 @@
           <h3 class="section-subheading text-muted">私たちの最近の作品をご覧ください</h3>
         </div>
         <div class="row">
-          <!-- ポートフォリオアイテム 1 -->
+          
+          <!-- ポートフォリオアイテム 1 (1.jpgを使用) -->
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="portfolio-item card shadow-sm">
               <a class="portfolio-link" href="#!">
-                <img class="img-fluid" src="https://placehold.co/600x400/6c757d/ffffff" alt="プロジェクト1のプレースホルダー画像" />
+                <!-- 修正: プレースホルダーをアップロードファイル 1.jpg に置き換え -->
+                <img class="img-fluid" src="1.jpg" alt="クライアントとの対話とアプリ開発の画像" />
               </a>
               <div class="portfolio-caption card-body text-center">
-                <div class="portfolio-caption-heading">プロジェクト名 A</div>
-                <div class="portfolio-caption-subheading text-muted">カテゴリー: UI/UX</div>
+                <div class="portfolio-caption-heading">プロジェクト名 A (思考・分析)</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: UI/UX & プランニング</div>
               </div>
             </div>
           </div>
-          <!-- ポートフォリオアイテム 2 -->
+          
+          <!-- ポートフォリオアイテム 2 (2.jpgを使用) -->
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="portfolio-item card shadow-sm">
               <a class="portfolio-link" href="#!">
-                <img class="img-fluid" src="https://placehold.co/600x400/495057/ffffff" alt="プロジェクト2のプレースホルダー画像" />
+                <!-- 修正: プレースホルダーをアップロードファイル 2.jpg に置き換え -->
+                <img class="img-fluid" src="2.jpg" alt="チームミーティングとブレインストーミングの画像" />
               </a>
               <div class="portfolio-caption card-body text-center">
-                <div class="portfolio-caption-heading">プロジェクト名 B</div>
-                <div class="portfolio-caption-subheading text-muted">カテゴリー: ブランディング</div>
+                <div class="portfolio-caption-heading">プロジェクト名 B (チームワーク)</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: ブランディング & ワークフロー</div>
               </div>
             </div>
           </div>
-          <!-- ポートフォリオアイテム 3 -->
+          
+          <!-- ポートフォリオアイテム 3 (3.jpgを使用) -->
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="portfolio-item card shadow-sm">
               <a class="portfolio-link" href="#!">
-                <img class="img-fluid" src="https://placehold.co/600x400/212529/ffffff" alt="プロジェクト3のプレースホルダー画像" />
+                <!-- 修正: プレースホルダーをアップロードファイル 3.jpg に置き換え -->
+                <img class="img-fluid" src="3.jpg" alt="モバイルアプリのタスク管理と設定の画像" />
               </a>
               <div class="portfolio-caption card-body text-center">
-                <div class="portfolio-caption-heading">プロジェクト名 C</div>
-                <div class="portfolio-caption-subheading text-muted">カテゴリー: ウェブサイト</div>
+                <div class="portfolio-caption-heading">プロジェクト名 C (アプリ開発)</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: ウェブサイト & モバイル</div>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
