@@ -1,56 +1,370 @@
 <!doctype html>
 <html lang="ja">
   <head>
+    <!-- 必須のmetaタグ -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GitHubで作成したBootstrapページ</title>
 
     <!-- Bootstrap 5 CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+    <!-- Font Awesome Icons (アイコン用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Bootstrap Agency風シンプルページ</title>
+    
     <style>
-        .hero {
-            background-color: #212529; /* Dark background */
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
+      /* Agencyテーマを意識したカスタムスタイル */
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      /* --- ヒーローセクション (Masthead) のスタイル --- */
+      header.masthead {
+        padding-top: 10rem;
+        padding-bottom: 6rem;
+        text-align: center;
+        
+        /* 背景画像を無地のプレースホルダーに設定 (文字が重ならないように修正済み) */
+        background-image: url('https://placehold.co/1920x1080/495057/495057');
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-size: cover;
+        
+        position: relative;
+        z-index: 1; 
+      }
+      
+      /* 背景の上に暗いオーバーレイ（黒いフィルター）を追加 */
+      header.masthead::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* 透明度40%の黒いフィルター */
+        z-index: -1; 
+      }
+      
+      header.masthead .masthead-subheading {
+        font-size: 1.5rem;
+        font-style: italic;
+        line-height: 1.5rem;
+        margin-bottom: 25px;
+        /* Agencyテーマの特徴的な黄色 */
+        color: #ffc800; 
+        /* 文字に影を付け、視認性を高める */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+      }
+      
+      header.masthead .masthead-heading {
+        font-size: 3.25rem;
+        font-weight: 700;
+        line-height: 3.25rem;
+        margin-bottom: 2rem;
+        /* 文字色を白に固定 */
+        color: #fff !important; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      /* サービスセクションのスタイル */
+      .service-heading {
+        margin: 15px 0;
+        text-transform: none;
+      }
+      .fa-stack-2x {
+        color: #ffc800; /* Agencyテーマのプライマリカラー */
+      }
+
+      /* フッターの調整 */
+      footer {
+        padding: 1.5rem 0;
+        text-align: center;
+      }
+
+      /* レスポンシブ調整 */
+      @media (min-width: 768px) {
+        header.masthead {
+          padding-top: 12.5rem;
+          padding-bottom: 12.5rem;
         }
+        header.masthead .masthead-subheading {
+          font-size: 2.25rem;
+          font-style: italic;
+          line-height: 2.25rem;
+          margin-bottom: 30px;
+        }
+        header.masthead .masthead-heading {
+          font-size: 4.5rem;
+          font-weight: 700;
+          line-height: 4.5rem;
+          margin-bottom: 4rem;
+        }
+      }
     </style>
   </head>
-  <body>
+  
+  <body id="page-top">
 
-    <!-- ヒーローセクション -->
-    <div class="hero">
-        <div class="container">
-            <h1 class="display-4">GitHubで作成完了！</h1>
-            <p class="lead">このファイルはブラウザ上で直接作成・コミットされました。</p>
-            <a href="https://getbootstrap.com/" class="btn btn-warning btn-lg">Bootstrap公式サイトへ</a>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #212529;">
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">Simple Agency</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#services">サービス</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">ポートフォリオ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">会社概要</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">お問い合わせ</a></li>
+          </ul>
         </div>
-    </div>
+      </div>
+    </nav>
 
-    <!-- コンテンツセクション -->
-    <div class="container my-5">
+    <!-- マストヘッド/ヒーローセクション -->
+    <header class="masthead">
+      <div class="container">
+        <div class="masthead-subheading">私たちのスタジオへようこそ！</div>
+        <div class="masthead-heading text-uppercase">お会いできて光栄です</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">もっと詳しく</a>
+      </div>
+    </header>
+
+    <!-- サービスセクション -->
+    <section class="page-section" id="services">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">サービス</h2>
+          <h3 class="section-subheading text-muted">提供する主要なサービス</h3>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">Eコマース</h4>
+            <p class="text-muted">最新技術を用いたオンラインストア構築をサポートします。</p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">レスポンシブデザイン</h4>
+            <p class="text-muted">スマートフォンからPCまで、あらゆるデバイスで最適に表示されるデザインを提供します。</p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">ウェブセキュリティ</h4>
+            <p class="text-muted">お客様のウェブサイトをサイバー脅威から守るための堅牢なセキュリティ対策を実施します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ポートフォリオセクション (ダミーデータ) -->
+    <section class="page-section bg-light" id="portfolio">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">ポートフォリオ</h2>
+          <h3 class="section-subheading text-muted">私たちの最近の作品をご覧ください</h3>
+        </div>
         <div class="row">
-            <div class="col-md-6 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">GitHub Pages</h5>
-                        <p class="card-text">このファイルを公開するには、GitHub Pagesの設定が必要です。</p>
-                    </div>
-                </div>
+          <!-- ポートフォリオアイテム 1 -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item card shadow-sm">
+              <a class="portfolio-link" href="#!">
+                <img class="img-fluid" src="https://placehold.co/600x400/6c757d/ffffff" alt="プロジェクト1のプレースホルダー画像" />
+              </a>
+              <div class="portfolio-caption card-body text-center">
+                <div class="portfolio-caption-heading">プロジェクト名 A</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: UI/UX</div>
+              </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Webで編集</h5>
-                        <p class="card-text">リポジトリで「.」（ドット）キーを押すと、VS Code Webエディタが開きます。</p>
+          </div>
+          <!-- ポートフォリオアイテム 2 -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item card shadow-sm">
+              <a class="portfolio-link" href="#!">
+                <img class="img-fluid" src="https://placehold.co/600x400/495057/ffffff" alt="プロジェクト2のプレースホルダー画像" />
+              </a>
+              <div class="portfolio-caption card-body text-center">
+                <div class="portfolio-caption-heading">プロジェクト名 B</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: ブランディング</div>
+              </div>
+            </div>
+          </div>
+          <!-- ポートフォリオアイテム 3 -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item card shadow-sm">
+              <a class="portfolio-link" href="#!">
+                <img class="img-fluid" src="https://placehold.co/600x400/212529/ffffff" alt="プロジェクト3のプレースホルダー画像" />
+              </a>
+              <div class="portfolio-caption card-body text-center">
+                <div class="portfolio-caption-heading">プロジェクト名 C</div>
+                <div class="portfolio-caption-subheading text-muted">カテゴリー: ウェブサイト</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社概要セクション (Agencyテーマのタイムライン風) -->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">会社概要</h2>
+                <h3 class="section-subheading text-muted">私たちの歩み</h3>
+            </div>
+            <!-- タイムラインの代わりにシンプルなカードで表現 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card p-4 mb-3 shadow-sm">
+                        <h4 class="text-primary">2010年 - 設立</h4>
+                        <p class="text-muted">小さなデザインスタジオとして活動を開始しました。</p>
+                    </div>
+                    <div class="card p-4 mb-3 shadow-sm">
+                        <h4 class="text-primary">2015年 - サービス拡大</h4>
+                        <p class="text-muted">ウェブ開発を含むフルサービスエージェンシーへと移行しました。</p>
+                    </div>
+                    <div class="card p-4 shadow-sm">
+                        <h4 class="text-primary">現在 - 未来へ</h4>
+                        <p class="text-muted">常に最新の技術を取り入れ、クライアントの成長をサポートし続けています。</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Bootstrap JS Bundle (CDN) -->
+    <!-- お問い合わせセクション -->
+    <section class="page-section" id="contact" style="background-color: #212529;">
+      <div class="container">
+        <div class="text-center text-white">
+          <h2 class="section-heading text-uppercase">お問い合わせ</h2>
+          <h3 class="section-subheading text-muted">ご質問やご相談はこちらからどうぞ</h3>
+        </div>
+        
+        <div class="row align-items-stretch">
+          <div class="col-lg-10 mx-auto">
+            <form id="contactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-4">
+                    <!-- Name input -->
+                    <input class="form-control" id="name" type="text" placeholder="お名前 *" required />
+                  </div>
+                  <div class="form-group mb-4">
+                    <!-- Email address input -->
+                    <input class="form-control" id="email" type="email" placeholder="メールアドレス *" required />
+                  </div>
+                  <div class="form-group mb-4">
+                    <!-- Phone number input -->
+                    <input class="form-control" id="phone" type="tel" placeholder="電話番号" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-group-textarea mb-4">
+                    <!-- Message input -->
+                    <textarea class="form-control" id="message" placeholder="メッセージ *" rows="7" required></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="d-none" id="submitSuccessMessage">
+                  <div class="text-white mb-3">送信が完了しました！ありがとうございます。</div>
+                </div>
+                <div class="d-none" id="submitErrorMessage">
+                  <div class="text-danger mb-3">エラーが発生しました。再度お試しください。</div>
+                </div>
+                <!-- Submit Button-->
+                <button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">メッセージを送信</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2024</div>
+          <div class="col-lg-4 my-3 my-lg-0">
+            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="link-dark text-decoration-none me-3" href="#!">プライバシーポリシー</a>
+            <a class="link-dark text-decoration-none" href="#!">利用規約</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JS (Popper & Bootstrap JS bundled) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- フォーム送信処理 (BootstrapのJS機能ではありませんが、テンプレートの雰囲気を出すために追加) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const successMessage = document.getElementById('submitSuccessMessage');
+        const errorMessage = document.getElementById('submitErrorMessage');
+
+        const validateForm = () => {
+            // シンプルなバリデーション
+            const isValid = nameInput.value.trim() !== '' && 
+                            emailInput.value.trim() !== '' && 
+                            messageInput.value.trim() !== '' && 
+                            emailInput.checkValidity();
+            submitButton.disabled = !isValid;
+            if (isValid) {
+                submitButton.classList.remove('disabled');
+            } else {
+                submitButton.classList.add('disabled');
+            }
+        };
+
+        const formInputs = [nameInput, emailInput, messageInput];
+        formInputs.forEach(input => input.addEventListener('input', validateForm));
+        
+        // 初回ロード時にもボタンの状態をチェック
+        validateForm();
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          
+          // このデモでは、実際の送信は行わず、成功メッセージを表示します
+          successMessage.classList.remove('d-none');
+          errorMessage.classList.add('d-none');
+
+          // フォームをリセット
+          form.reset();
+          submitButton.classList.add('disabled'); // ボタンを無効に戻す
+          
+          // メッセージを少ししたら非表示に戻す
+          setTimeout(() => {
+              successMessage.classList.add('d-none');
+          }, 5000);
+        });
+      });
+    </script>
   </body>
 </html>
